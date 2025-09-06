@@ -1,44 +1,46 @@
-## Calculating-Free-to-Paid-Conversion-Rate-with-Mysql
-### Project Overview
-This project analyzes the student funnel of an edtech platform using SQL. It tracks three stages per student:
-**Registration** – All students who signed up.
-**First Engagement** – Students who watched their first lecture.
-**First Purchase** – Students who purchased their first paid subscription.
+<img width="462" height="718" alt="image" src="https://github.com/user-attachments/assets/54107f57-89db-4929-b2c4-82e020fa826d" /># Calculating Free-to-Paid Conversion Rate with MySQL
 
-The goal is to understand the conversion from free to paid users, and the average duration students take between registration, engagement, and purchase.
+## Project Overview
+This project analyzes the student funnel of an edtech platform using SQL. The funnel tracks three stages per student:  
+1. **Registration** – when a student signs up.  
+2. **First Engagement** – when a student watches their first lecture.  
+3. **First Purchase** – when a student subscribes for the first time.  
 
-Objectives
+The aim is to understand student behavior, measure engagement, and calculate the free-to-paid conversion rate. ***Please refer to the attached/uploaded .sql text file with name 'db_course_conversions_Solved' to go through the complete schema structure & analysis**
 
-Calculate the Free-to-Paid Conversion Rate among engaged students.
+## Objective
+- Measure the **free-to-paid conversion rate** among engaged students.  
+- Calculate the **average duration** between registration and first engagement.  
+- Calculate the **average duration** between first engagement and first purchase.  
+- Identify insights that can inform engagement and monetization strategies.
 
-Determine the average time between registration and first engagement.
+## Dataset
+The project uses three tables from the `db_course_conversions` database:  
+- **student_info** – contains registration information of students.  
+- **student_engagement** – logs of lectures watched by students.  
+- **student_purchases** – details of students’ subscription purchases.  
 
-Determine the average time between first engagement and first purchase.
+## Approach / Methodology
+1. Explore each table to understand the structure and data quality.  
+2. Identify students who have registered but never engaged, and those who engaged but never purchased.  
+3. Create a **master table** joining all three tables using LEFT JOINs to capture all students.  
+4. Create a **subset table** of engaged students to calculate metrics.  
+5. Compute key metrics:  
+   - Free-to-paid conversion rate among engaged students.  
+   - Average days between registration and first engagement.  
+   - Average days between first engagement and first purchase.
+<img width="462" height="718" alt="image" src="https://github.com/user-attachments/assets/b2b4fd1d-1d38-4117-b9d1-99812ae59539" />
 
-Provide insights to help the platform improve user engagement and monetization.
+## Key Metrics & Results
+- **Total registered students:** 40,979  
+- **Engaged students (watched at least one lecture):** 20,255  
+- **Unique purchasers:** 3,138  
+- **Free-to-paid conversion rate among engaged students:** 11.29%  
+- **Average duration between registration and first engagement:** 3.42 days  
+- **Average duration between first engagement and first purchase:** 26.25 days  
 
-Dataset
-
-The project uses three tables:
-
-Table	Description
-student_info	Contains all registered students and their registration dates.
-student_engagement	Logs all engagement events (lecture watched) by students.
-student_purchases	Logs all purchase events (subscriptions) by students.
-Approach / Methodology
-
-Explore the tables and understand the funnel.
-
-Identify students who registered but never engaged, engaged but never purchased, and purchased without engagement.
-
-Create a master table combining all three tables using LEFT JOIN to retain all students.
-
-Create a subset of engaged students for calculating the free-to-paid conversion.
-
-Calculate key metrics:
-
-Free-to-paid conversion rate.
-
-Average duration from registration to first engagement.
-
-Average duration from first engagement to first purchase.
+## Interpretation & Insights
+- Only **half of the registered students** engage with the platform initially.  
+- Among engaged students, **~11% convert to paid subscriptions**, highlighting potential for growth.  
+- Students typically watch their first lecture within **3-4 days** of registration.  
+- The delay between first engagement and purchase suggests that **upselling or targeted reminders** could accelerate conversions.  
